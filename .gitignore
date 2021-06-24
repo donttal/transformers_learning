@@ -133,3 +133,4 @@ dmypy.json
 .ipynb_checkpoints
 results
 raw_bangla_for_BERT.txt
+.idea
