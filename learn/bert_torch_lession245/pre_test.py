@@ -19,19 +19,19 @@ import glob
 # print(ch)
 from transformers import BertTokenizer,BertForTokenClassification
 
-pretrained_weights = 'chinese_wwm_pytorch'
+pretrained_weights = 'hfl/chinese-bert-wwm-ext'
 tokenizer = BertTokenizer.from_pretrained(pretrained_weights)
 model = BertForTokenClassification.from_pretrained(pretrained_weights, num_labels=4)
 input_ids = torch.tensor(tokenizer.encode("夕小瑶的卖萌屋")).unsqueeze(0)
 labels = torch.tensor([1] * input_ids.size(1)).unsqueeze(0)
-print(input_ids.size)
-print(input_ids.size(1))
-
-print(labels)
-print(input_ids)
+# print(input_ids.size)
+# print(input_ids.size(1))
+#
+# print(labels)
+# print(input_ids)
 outputs = model(input_ids, labels=labels)
 loss, scores = outputs[:2]
-print(loss, scores)
+print(loss+'\n'+scores)
 # 
 # # tokenizer = BertTokenizer.from_pretrained("bert-base_chinese")
 # # model = BertModel.from_pretrained("bert-base_chinese")
